@@ -1,0 +1,7 @@
+require_relative "config/application"
+require "emque/consuming/tasks"
+
+__DIR__ = File.dirname(__FILE__)
+Dir.glob("#{__DIR__}/tasks/*.rake").each do |rake_file|
+  import rake_file
+end
