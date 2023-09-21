@@ -209,6 +209,8 @@ Testing is a bit sparse at the moment, but we're working on it.
 To run tests...
 
 ```
+osnp run setup
+osnp run start
 bundle exec rspec
 ```
 
