@@ -211,6 +211,7 @@ To run tests...
 ```
 osnp run setup
 osnp run start
+bundle install
 bundle exec rspec
 ```
 
