@@ -1,0 +1,21 @@
+---
+classification: gem
+production: {}
+performance_monitoring: []
+error_monitoring: []
+continuous_integration: []
+bug_tracking: []
+documentation: []
+deployment: []
+languages:
+  - name: Ruby
+    version: 2.7.8
+frameworks: []
+logging: []
+infrastructure:
+  application:
+    name: emque-consuming
+    image: ruby
+    imageTag: 2.7-slim
+    startcmd: "bundle exec rspec"
+    vault-path: dev/applications/data/emque-consuming/dotenv
