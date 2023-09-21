@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  app:
+    image: emque-consuming:latest
+    container_name: wee
+    build:
+      context: ../../
+      dockerfile: infra/docker/Dev.dockerfile
+    env_file: ../../.env.development
+    volumes:
+      - emque_consuming_bundle:/usr/local/bundle
+      - ../../:/usr/src/app/:cached
+
+networks:
+  default:
+    external:
+      name: dockercoreservices_default
+
+volumes:
+  emque_consuming_bundle:
+    name: emque_consuming_bundle
