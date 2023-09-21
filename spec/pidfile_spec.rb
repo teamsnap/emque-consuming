@@ -5,9 +5,9 @@ describe Emque::Consuming::Pidfile do
     it "creates a directory to hold the pidfile if it doesn't exist" do
       path = "spec/dummy/tmp/testingpidpath"
       pidfile = File.join(path, "pidfile.pid")
-      expect(Dir.exists?(path)).to eq(false)
+      expect(Dir.exist?(path)).to eq(false)
       Emque::Consuming::Pidfile.new(pidfile)
-      expect(Dir.exists?(path)).to eq(true)
+      expect(Dir.exist?(path)).to eq(true)
       FileUtils.rm_rf(path)
     end
 
@@ -35,9 +35,9 @@ describe Emque::Consuming::Pidfile do
             f.write("10000000")
           end
           pf = Emque::Consuming::Pidfile.new(pidfile)
-          expect(File.exists?(pidfile)).to eq(true)
+          expect(File.exist?(pidfile)).to eq(true)
           expect(pf.running?).to eq(false)
-          expect(File.exists?(pidfile)).to eq(false)
+          expect(File.exist?(pidfile)).to eq(false)
           FileUtils.rm_rf(path)
         end
       end
@@ -51,7 +51,7 @@ describe Emque::Consuming::Pidfile do
             f.write(Process.pid)
           end
           pf = Emque::Consuming::Pidfile.new(pidfile)
-          expect(File.exists?(pidfile)).to eq(true)
+          expect(File.exist?(pidfile)).to eq(true)
           expect(pf.running?).to eq(true)
           FileUtils.rm_rf(path)
         end
@@ -64,9 +64,9 @@ describe Emque::Consuming::Pidfile do
       path = "spec/dummy/tmp/testingpidpath"
       pidfile = File.join(path, "pidfile.pid")
       pf = Emque::Consuming::Pidfile.new(pidfile)
-      expect(File.exists?(pidfile)).to eq(false)
+      expect(File.exist?(pidfile)).to eq(false)
       pf.write
-      expect(File.exists?(pidfile)).to eq(true)
+      expect(File.exist?(pidfile)).to eq(true)
       expect(File.read(pidfile).chomp).to eq(Process.pid.to_s)
       FileUtils.rm_rf(path)
     end
