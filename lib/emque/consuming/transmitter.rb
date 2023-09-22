@@ -6,7 +6,7 @@ module Emque
   module Consuming
     module Transmitter
       def self.send(command:, socket_path: "tmp/emque.sock", args: [])
-        if File.exists?(socket_path)
+        if File.exist?(socket_path)
           socket = UNIXSocket.new(socket_path)
           socket.send(Oj.dump({
             :command => command,
@@ -19,7 +19,7 @@ module Emque
           "Socket not found at #{socket_path}"
         end
       rescue Errno::ECONNREFUSED
-        FileUtils.rm_f(socket_path) if File.exists?(socket_path)
+        FileUtils.rm_f(socket_path) if File.exist?(socket_path)
         "The UNIX Socket found at #{socket_path} was dead"
       end
 

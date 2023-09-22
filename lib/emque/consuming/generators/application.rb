@@ -54,11 +54,11 @@ module Emque
             unless IGNORE.include?(e)
               loc = File.join(path, e)
 
-              if Dir.exists?(loc)
+              if Dir.exist?(loc)
                 new_nest = nesting + [e]
                 create_path = File.join(*new_nest)
 
-                unless Dir.exists?(create_path)
+                unless Dir.exist?(create_path)
                   FileUtils.mkdir_p(create_path)
                   puts "created directory #{relative_path(create_path)}"
                 end
@@ -72,7 +72,7 @@ module Emque
                 display = relative_path(filename)
                 overwrite = "Y"
 
-                if File.exists?(filename)
+                if File.exist?(filename)
                   print "#{display} exists, overwrite? (yN) "
                   overwrite = $stdin.gets
                 end

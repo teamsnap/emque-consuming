@@ -12,7 +12,7 @@ module Emque
       def initialize(path)
         self.path = path
         ensure_dir_exists
-        self.pid = File.read(path).to_i if File.exists?(path)
+        self.pid = File.read(path).to_i if File.exist?(path)
       end
 
       def running?
@@ -47,7 +47,7 @@ module Emque
       end
 
       def rm_file
-        FileUtils.rm_f(path) if File.exists?(path)
+        FileUtils.rm_f(path) if File.exist?(path)
       end
     end
   end

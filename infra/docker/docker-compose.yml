@@ -2,7 +2,7 @@ version: '3.7'
 services:
   app:
     image: emque-consuming:latest
-    container_name: wee
+    container_name: emque-consuming
     build:
       context: ../../
       dockerfile: infra/docker/Dev.dockerfile
